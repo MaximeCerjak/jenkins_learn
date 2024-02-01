@@ -1,17 +1,29 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Get from git project') {
-            steps {
-                git 'https://github.com/MaximeCerjak/jenkins_learn.git'
+  
+          agent any
+
+          tools {
+            maven 'maven'
+          }
+
+          stages{
+            stage('Get from git project'){
+  steps {
+    git 'https://github.com/MezghichGit/mavenJunitProject'
+  }
             }
-        }
-        
-        stage('Compile then package') {
-            steps {
-                sh 'mvn package'
+
+           // Create a new .jar file 
+
+            stage('Create a new .jar') {
+
+                steps {
+                    
+                   sh 'mvn clean install -DskipTests'
+                
+                      }
+
+          
             }
-        }
-    }
+}
 }
