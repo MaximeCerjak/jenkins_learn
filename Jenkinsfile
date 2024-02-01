@@ -1,14 +1,10 @@
 pipeline {
     agent any
     
-    tools {
-        maven 'Maven' // Assurez-vous que 'Maven' correspond au nom de l'installation Maven configuré dans Jenkins.
-    }
-    
     stages {
         stage('Get from git project') {
             steps {
-                git 'https://github.com/MezghichGit/mavenJunitProject'
+                git 'https://github.com/MaximeCerjak/jenkins_learn.git'
             }
         }
         
